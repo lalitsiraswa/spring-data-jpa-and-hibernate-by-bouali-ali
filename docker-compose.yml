@@ -1,0 +1,21 @@
+services:
+  db:
+    container_name: spring-boot-jpa
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres
+      POSTGRES_DB: spring-boot-jpa
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5333:5432"
+    networks:
+      - db
+    restart: unless-stopped
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:
