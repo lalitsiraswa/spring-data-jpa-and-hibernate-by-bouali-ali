@@ -10,7 +10,15 @@ import lombok.*;
 public class Author {
     // Primary-Key
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "author_sequence"
+    )
+    @SequenceGenerator(
+            name = "author_sequence",
+            sequenceName = "author_sequence",
+            allocationSize = 1
+    )
     private Integer id;
     private String firstName;
     private String lastName;
