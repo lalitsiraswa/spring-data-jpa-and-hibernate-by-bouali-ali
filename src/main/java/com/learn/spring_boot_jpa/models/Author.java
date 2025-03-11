@@ -11,12 +11,19 @@ public class Author {
     // Primary-Key
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "author_sequence"
+            strategy = GenerationType.TABLE,
+            generator = "author_id_generator"
     )
-    @SequenceGenerator(
-            name = "author_sequence",
-            sequenceName = "author_sequence",
+//    @SequenceGenerator(
+//            name = "author_sequence",
+//            sequenceName = "author_sequence",
+//            allocationSize = 1
+//    )
+    @TableGenerator(
+            name = "author_id_generator",
+            table = "id_generator",
+            pkColumnName = "id_name",
+            valueColumnName = "id_value",
             allocationSize = 1
     )
     private Integer id;
