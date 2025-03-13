@@ -25,7 +25,7 @@ public class SpringBootJpaApplication {
                     .lastName("Siraswa")
                     .age(25)
                     .email("lalitsiraswa@gmail.com")
-                    .createdAt(LocalDateTime.now())
+//                    .createdAt(LocalDateTime.now())
                     .build();
             authorRepository.save(author);
         };
