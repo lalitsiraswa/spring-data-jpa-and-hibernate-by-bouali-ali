@@ -1,5 +1,6 @@
 package com.learn.spring_boot_jpa.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,4 +31,10 @@ public class Course {
             }
     )
     private List<Author> authors;
+    @OneToMany(
+            mappedBy = "course",
+            cascade = CascadeType.ALL
+    )
+    @JsonManagedReference
+    private List<Section> sections;
 }
