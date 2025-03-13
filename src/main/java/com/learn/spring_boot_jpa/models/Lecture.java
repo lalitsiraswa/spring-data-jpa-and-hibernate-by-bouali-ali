@@ -23,4 +23,9 @@ public class Lecture {
     )
     @JsonBackReference
     private Section section;
+    @OneToOne
+    @JoinColumn(
+            name = "resource_id"
+    )
+    private Resource resource;
 }
