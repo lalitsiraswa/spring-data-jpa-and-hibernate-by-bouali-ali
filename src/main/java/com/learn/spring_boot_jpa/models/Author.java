@@ -46,15 +46,15 @@ public class Author {
     )
     private String email;
     private int age;
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-    @Column(
-            insertable = false
-    )
-    private LocalDateTime lastModifies;
+    //    @Column(
+//            updatable = false,
+//            nullable = false
+//    )
+//    private LocalDateTime createdAt;
+//    @Column(
+//            insertable = false
+//    )
+//    private LocalDateTime lastModifies;
     @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
 }
