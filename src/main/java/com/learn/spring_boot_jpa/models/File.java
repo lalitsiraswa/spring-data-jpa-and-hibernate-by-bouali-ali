@@ -1,6 +1,5 @@
 package com.learn.spring_boot_jpa.models;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@DiscriminatorValue(value = "F")
-public class File extends Resource{
+// @DiscriminatorValue(value = "F")
+public class File extends Resource {
     private String type;
 }

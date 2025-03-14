@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "resource_type") // default "DTYPE";
+@Inheritance(strategy = InheritanceType.JOINED)
+// @DiscriminatorColumn(name = "resource_type") // default "DTYPE"; -> Only needed with @Inheritance(strategy = InheritanceType.SINGLE_TABLE) JPA - Single Table Strategy
 public class Resource {
     @Id
     @GeneratedValue
