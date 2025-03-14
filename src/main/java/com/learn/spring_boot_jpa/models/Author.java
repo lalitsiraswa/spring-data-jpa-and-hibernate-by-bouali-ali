@@ -1,21 +1,30 @@
 package com.learn.spring_boot_jpa.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+// @Builder
+@SuperBuilder
+// When we use a builder within a child-class/derived-class, we are not able to access parent class fields,
+// for this we need to use @SuperBuilder with all the entities that are inheriting from BaseEntity.
 @Entity
 //@Table(name = "AUTHOR_TBL")
-public class Author {
+public class Author extends BaseEntity {
     // Primary-Key
-    @Id
-    @GeneratedValue
+//    @Id
+//    @GeneratedValue
 //    (
 //           strategy = GenerationType.TABLE,
 //           generator = "author_id_generator"
@@ -27,14 +36,14 @@ public class Author {
 //            allocationSize = 1
 //    )
 
-//    @TableGenerator(
+    //    @TableGenerator(
 //            name = "author_id_generator",
 //            table = "id_generator",
 //            pkColumnName = "id_name",
 //            valueColumnName = "id_value",
 //            allocationSize = 1
 //    )
-    private Integer id;
+//    private Integer id;
     @Column(
             length = 35
     )
