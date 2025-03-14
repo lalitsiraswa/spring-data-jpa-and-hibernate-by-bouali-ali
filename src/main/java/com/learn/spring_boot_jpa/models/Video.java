@@ -15,6 +15,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 @DiscriminatorValue(value = "V")
-public class Video extends Resource{
+public class Video extends Resource {
     private int length;
 }
