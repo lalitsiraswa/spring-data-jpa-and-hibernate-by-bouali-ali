@@ -1,11 +1,14 @@
 package com.learn.spring_boot_jpa;
 
+import com.learn.spring_boot_jpa.models.Author;
 import com.learn.spring_boot_jpa.repositories.AuthorRepository;
 import com.learn.spring_boot_jpa.repositories.VideoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class SpringBootJpaApplication {
@@ -42,6 +45,18 @@ public class SpringBootJpaApplication {
                     .url("https://youtu.be/smile")
                     .build();
             videoRepository.save(video); */
+
+            // Update author with ID: 1
+            var author = Author.builder()
+                    .id(1)
+                    .firstName("Lalit")
+                    .lastName("Siraswa")
+                    .age(25)
+                    .email("lalitsiraswa@gmail.com")
+                    .createdBy("Lalit Siraswa")
+                    .createdAt(LocalDateTime.now())
+                    .build();
+            authorRepository.save(author);
         };
     }
 }
