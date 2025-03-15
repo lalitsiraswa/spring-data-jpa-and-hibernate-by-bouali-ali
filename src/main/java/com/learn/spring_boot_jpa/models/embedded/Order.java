@@ -1,5 +1,6 @@
 package com.learn.spring_boot_jpa.models.embedded;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -17,4 +18,6 @@ public class Order {
     private OrderId orderId;
     private String orderInfo;
     private String transactionInfo;
+    @Embedded
+    private Address address;
 }
