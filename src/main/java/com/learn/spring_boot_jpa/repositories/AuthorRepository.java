@@ -8,9 +8,15 @@ import java.util.List;
 
 @Repository // Optional
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
+    // select * from author where first_name = "Lalit";
     List<Author> findAllByFirstName(String firstName);
 
+    // select * from author where first_name = "LALIT";
     List<Author> findAllByFirstNameIgnoreCase(String firstName);
 
+    // select * from author where first_name list "%ali%";
     List<Author> findAllByFirstNameContainingIgnoreCase(String firstName);
+
+    // select * from author where first_name like "Lal%"
+    List<Author> findAllByFirstNameStartsWithIgnoreCase(String name);
 }
