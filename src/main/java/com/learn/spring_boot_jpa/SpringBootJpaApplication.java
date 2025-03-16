@@ -59,7 +59,10 @@ public class SpringBootJpaApplication {
 //            authorRepository.save(author);
 
             // update author a set a.age = 25 where a.id = 1;
-            authorRepository.updateAuthor(25, 1);
+//            authorRepository.updateAuthor(25, 1);
+
+            // update all authors age
+            authorRepository.updateAllAuthorsAges(39);
         };
     }
 }
