@@ -19,14 +19,16 @@ import java.util.List;
 // for this we need to use @SuperBuilder with all the entities that are inheriting from BaseEntity.
 @Entity
 //@Table(name = "AUTHOR_TBL")
-@NamedQuery(
-        name = "Author.findByNamedQuery",
-        query = "select a from Author a where a.age >= :age"
-)
-@NamedQuery(
-        name = "Author.updateByNamedQuery",
-        query = "update Author a set a.age = :age"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Author.findByNamedQuery",
+                query = "select a from Author a where a.age >= :age"
+        ),
+        @NamedQuery(
+                name = "Author.updateByNamedQuery",
+                query = "update Author a set a.age = :age"
+        )
+})
 public class Author extends BaseEntity {
     // Primary-Key
 //    @Id
