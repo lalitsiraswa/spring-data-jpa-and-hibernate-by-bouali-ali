@@ -68,6 +68,9 @@ public class SpringBootJpaApplication {
             // Find By @NamedQuery()
             var authors = authorRepository.findByNamedQuery(40);
             authors.forEach(System.out::println);
+
+            // update with @NamedQuery()
+            authorRepository.updateByNamedQuery(59);
         };
     }
 }
