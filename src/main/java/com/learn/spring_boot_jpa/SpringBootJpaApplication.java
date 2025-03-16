@@ -1,5 +1,6 @@
 package com.learn.spring_boot_jpa;
 
+import com.github.javafaker.Faker;
 import com.learn.spring_boot_jpa.models.Author;
 import com.learn.spring_boot_jpa.repositories.AuthorRepository;
 import com.learn.spring_boot_jpa.repositories.VideoRepository;
@@ -23,7 +24,7 @@ public class SpringBootJpaApplication {
             VideoRepository videoRepository
     ) {
         return args -> {
-            /* for (int i = 1; i <= 50; i++) {
+            for (int i = 1; i <= 50; i++) {
                 Faker faker = new Faker();
                 String firstName = faker.name().firstName();
                 String lastName = faker.name().lastName();
@@ -37,7 +38,7 @@ public class SpringBootJpaApplication {
                         .createdBy(firstName + " " + lastName)
                         .build();
                 authorRepository.save(author);
-            } */
+            }
 
             /* var video = Video.builder()
                     .name("smile.mp4")
@@ -62,7 +63,11 @@ public class SpringBootJpaApplication {
 //            authorRepository.updateAuthor(25, 1);
 
             // update all authors age
-            authorRepository.updateAllAuthorsAges(39);
+//            authorRepository.updateAllAuthorsAges(39);
+
+            // Find By @NamedQuery()
+            var authors = authorRepository.findByNamedQuery(40);
+            authors.forEach(System.out::println);
         };
     }
 }

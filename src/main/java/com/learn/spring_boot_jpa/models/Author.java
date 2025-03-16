@@ -1,8 +1,6 @@
 package com.learn.spring_boot_jpa.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +19,10 @@ import java.util.List;
 // for this we need to use @SuperBuilder with all the entities that are inheriting from BaseEntity.
 @Entity
 //@Table(name = "AUTHOR_TBL")
+@NamedQuery(
+        name = "Author.findByNamedQuery",
+        query = "select a from Author a where a.age >= :age"
+)
 public class Author extends BaseEntity {
     // Primary-Key
 //    @Id
@@ -64,6 +66,9 @@ public class Author extends BaseEntity {
 //            insertable = false
 //    )
 //    private LocalDateTime lastModifies;
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(
+            mappedBy = "authors",
+            fetch = FetchType.EAGER
+    )
     private List<Course> courses;
 }
