@@ -56,7 +56,10 @@ public class SpringBootJpaApplication {
                     .createdBy("Lalit Siraswa")
                     .createdAt(LocalDateTime.now())
                     .build();
-            authorRepository.save(author);
+//            authorRepository.save(author);
+
+            // update author a set a.age = 25 where a.id = 1;
+            authorRepository.updateAuthor(25, 1);
         };
     }
 }
