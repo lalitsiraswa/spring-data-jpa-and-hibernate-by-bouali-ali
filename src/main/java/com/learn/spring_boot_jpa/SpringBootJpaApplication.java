@@ -1,13 +1,14 @@
 package com.learn.spring_boot_jpa;
 
-import com.github.javafaker.Faker;
 import com.learn.spring_boot_jpa.models.Author;
 import com.learn.spring_boot_jpa.repositories.AuthorRepository;
 import com.learn.spring_boot_jpa.repositories.VideoRepository;
+import com.learn.spring_boot_jpa.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 
@@ -24,7 +25,7 @@ public class SpringBootJpaApplication {
             VideoRepository videoRepository
     ) {
         return args -> {
-            for (int i = 1; i <= 50; i++) {
+            /* for (int i = 1; i <= 50; i++) {
                 Faker faker = new Faker();
                 String firstName = faker.name().firstName();
                 String lastName = faker.name().lastName();
@@ -38,7 +39,7 @@ public class SpringBootJpaApplication {
                         .createdBy(firstName + " " + lastName)
                         .build();
                 authorRepository.save(author);
-            }
+            } */
 
             /* var video = Video.builder()
                     .name("smile.mp4")
@@ -66,11 +67,18 @@ public class SpringBootJpaApplication {
 //            authorRepository.updateAllAuthorsAges(39);
 
             // Find By @NamedQuery()
-            var authors = authorRepository.findByNamedQuery(40);
-            authors.forEach(System.out::println);
+//            var authors = authorRepository.findByNamedQuery(40);
+//            authors.forEach(System.out::println);
 
             // update with @NamedQuery()
-            authorRepository.updateByNamedQuery(59);
+//            authorRepository.updateByNamedQuery(59);
+
+            // Specification<Author>
+            Specification<Author> authorSpecification = Specification
+                    .where(AuthorSpecification.hasAge(38))
+                    .and(AuthorSpecification.firstNameLike("Do"));
+
+            authorRepository.findAll(authorSpecification).forEach(System.out::println);
         };
     }
 }
